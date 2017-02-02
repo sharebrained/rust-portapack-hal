@@ -1,0 +1,15 @@
+[package]
+name = "portapack-hal"
+version = "0.1.0"
+license = "MIT/Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/sharebrained/rust-portapack-hal"
+description = "Hardware abstraction layer for PortaPack"
+keywords = ["portapack", "hackrf", "sdr", "hal"]
+authors = [
+	"Jared Boone <jared@sharebrained.com>",
+]
+
+[dependencies]
+lpc43xx = "0.0.0"
+hackrf-hal = "0.1.0"
