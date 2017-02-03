@@ -16,3 +16,9 @@ fn nop() {
 		() => {}
 	}
 }
+
+fn spin_wait(count: u32) {
+	for _ in 0..count {
+		nop();
+	}
+}
