@@ -89,3 +89,9 @@ pub fn data_write_high(value: u32) {
 	assert!(GPIO_LCD_DATA_PIN_COUNT == 8);
 	gpio_port().mpin[GPIO_LCD_DATA_PORT].write_word(value);
 }
+
+pub fn data_read() -> u32 {
+	assert!(GPIO_LCD_DATA_PIN_BASE == 8);
+	assert!(GPIO_LCD_DATA_PIN_COUNT == 8);
+	(gpio_port().mpin[GPIO_LCD_DATA_PORT].read_word() >> GPIO_LCD_DATA_PIN_BASE) & 0xff
+}
