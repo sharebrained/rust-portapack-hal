@@ -79,11 +79,13 @@ pub fn dir_read() {
 
 pub fn data_write_low(value: u32) {
 	assert!(GPIO_LCD_DATA_PIN_BASE == 8);
+	assert!(GPIO_LCD_DATA_PIN_COUNT == 8);
 	gpio_port().mpin[GPIO_LCD_DATA_PORT].write_word(value << GPIO_LCD_DATA_PIN_BASE);
 }
 
 pub fn data_write_high(value: u32) {
 	// Lazy code assumes that writing MPIN with 16 bits will put the high word in register[15:8]
 	assert!(GPIO_LCD_DATA_PIN_BASE == 8);
+	assert!(GPIO_LCD_DATA_PIN_COUNT == 8);
 	gpio_port().mpin[GPIO_LCD_DATA_PORT].write_word(value);
 }
