@@ -4,6 +4,7 @@
 
 extern crate lpc43xx;
 extern crate hackrf_hal;
+extern crate lcd_ili9341;
 
 pub mod io;
 pub mod lcd;

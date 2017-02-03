@@ -1,4 +1,5 @@
 
+use lcd_ili9341;
 use {nop, spin_wait};
 use io::{addr_0, addr_1, dir_read, dir_write, data_read, data_write_high, data_write_low, lcd_wr_assert, lcd_wr_deassert, lcd_rd_assert, lcd_rd_deassert};
 
@@ -91,3 +92,48 @@ fn data_read_memory() -> u32 {
 	let value_low = data_read();
 	(value_high << 8) | value_low
 }
+
+#[derive(Copy, Clone)]
+pub struct Interface {
+
+}
+
+impl Interface {
+	pub fn new() -> Interface {
+		Interface {
+		}
+	}
+}
+
+impl lcd_ili9341::Interface for Interface {
+	fn write_parameters(&self, command: u8, data: &[u8]) {
+		command_write(command as u32);
+		for value in data {
+			data_write(*value as u32);
+		}
+	}
+
+	fn write_memory<I>(&self, iterable: I)
+		where I: IntoIterator<Item=u32>
+	{
+		for value in iterable {
+			data_write(value);
+		}
+	}
+
+	fn read_parameters(&self, command: u8, data: &mut [u8]) {
+		command_write(command as u32);
+		data_read_parameter();	// Always one dummy parameter after a read command.
+		for value in data {
+			*value = data_read_parameter() as u8;
+		}
+	}
+
+	fn read_memory(&self, data: &mut [u32]) {
+		for value in data {
+			*value = data_read_memory();
+		}
+	}
+}
+
+pub type Controller = lcd_ili9341::Controller<Interface>;

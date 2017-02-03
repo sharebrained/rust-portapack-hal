@@ -13,3 +13,4 @@ authors = [
 [dependencies]
 lpc43xx = "0.0.0"
 hackrf-hal = "0.1.0"
+lcd-ili9341 = "0.1.0"
