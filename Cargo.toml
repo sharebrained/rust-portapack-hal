@@ -11,6 +11,6 @@ authors = [
 ]
 
 [dependencies]
-lpc43xx = "0.0.0"
-hackrf-hal = "0.1.0"
-lcd-ili9341 = "0.1.0"
+lpc43xx     = { git = "https://github.com/jboone/rust-lpc43xx.git"           }
+hackrf-hal  = { git = "https://github.com/sharebrained/rust-hackrf-hal.git"  }
+lcd-ili9341 = { git = "https://github.com/sharebrained/rust-lcd-ili9341.git" }
